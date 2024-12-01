@@ -1,10 +1,12 @@
+package ljankai.firstDay;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FirstDay {
+public class HistorianHysteria {
     public static void main(String[] args) {
-        String fileName = "./1day/data";
+        String fileName = "./src/main/java/ljankai/firstDay/data";
         ArrayList<Integer> leftSide = new ArrayList<>();
         ArrayList<Integer> rightSide = new ArrayList<>();
 
@@ -20,23 +22,19 @@ public class FirstDay {
         } catch (IOException e) {
             System.err.println("Hiba a fájl beolvasása közben: " + e.getMessage());
         }
-        statich(leftSide,rightSide);
+        partOne(leftSide,rightSide);
         partTwo(leftSide,rightSide);
     }
-    public static void statich(ArrayList<Integer> leftSide, ArrayList<Integer> rightSide) {
-        ArrayList<Integer> difference = new ArrayList<>();
+    public static void partOne(ArrayList<Integer> leftSide, ArrayList<Integer> rightSide) {
         int sum = 0;
 
         Collections.sort(leftSide);
         Collections.sort(rightSide);
 
-
         for (int i = 0; i < leftSide.size(); i++) {
-            difference.add(Math.abs(leftSide.get(i) - rightSide.get(i)));
+            sum += Math.abs(leftSide.get(i) - rightSide.get(i));
         }
-        for (int i = 0; i < difference.size(); i++) {
-            sum += difference.get(i);
-        }
+
         System.out.println(sum);
     }
     public static void partTwo(ArrayList<Integer> leftSide, ArrayList<Integer> rightSide) {
@@ -46,9 +44,9 @@ public class FirstDay {
         for (int i = 0; i < leftSide.size(); i++) {
             int count = Collections.frequency(rightSide, leftSide.get(i));
             product = leftSide.get(i);
-            product *= count;
-            sum += product;
+            sum += product * count;
         }
+
         System.out.println(sum);
     }
 }
