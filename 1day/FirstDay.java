@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class FirstDay {
     public static void main(String[] args) {
-        String fileName = "firstData";
+        String fileName = "./1day/data";
         ArrayList<Integer> leftSide = new ArrayList<>();
         ArrayList<Integer> rightSide = new ArrayList<>();
 
@@ -30,13 +30,10 @@ public class FirstDay {
         Collections.sort(leftSide);
         Collections.sort(rightSide);
 
-        System.out.println("Bal oldal: " + leftSide);
-        System.out.println("Jobb oldal: " + rightSide);
 
         for (int i = 0; i < leftSide.size(); i++) {
             difference.add(Math.abs(leftSide.get(i) - rightSide.get(i)));
         }
-        System.out.println(difference);
         for (int i = 0; i < difference.size(); i++) {
             sum += difference.get(i);
         }
