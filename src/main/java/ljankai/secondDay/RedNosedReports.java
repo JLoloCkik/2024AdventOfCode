@@ -4,7 +4,6 @@ import java.io.*;
 
 public class RedNosedReports {
     public static void main(String[] args) {
-        // A fájl elérési útvonala
         int safe = 0;
         int count = 0;
         String filePath = "./src/main/java/ljankai/secondDay/data";
@@ -13,9 +12,9 @@ public class RedNosedReports {
             String line;
 
             while ((line = br.readLine()) != null) {
-                // A sort feldaraboljuk számokká és tömbbé alakítjuk
+
                 int[] row = parseLineToIntArray(line);
-                // Meghívjuk a metódust az adott sor feldolgozására
+
                 safe = safe + partOne(row);
                 count = count + partTwo(row);
             }
@@ -43,7 +42,6 @@ public class RedNosedReports {
                 break;
             }
 
-            // Ellenőrizzük a növekvő vagy csökkenő mintát
             if ((isIncreasing && diff < 0) || (!isIncreasing && diff > 0)) {
                 isSafe = false;
                 break;
@@ -103,7 +101,6 @@ public class RedNosedReports {
 
             lastNum = row[i];
         }
-
         return isSafe;
     }
 
