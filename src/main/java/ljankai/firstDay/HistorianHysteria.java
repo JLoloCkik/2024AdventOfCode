@@ -25,6 +25,7 @@ public class HistorianHysteria {
         partOne(leftSide,rightSide);
         partTwo(leftSide,rightSide);
     }
+
     public static void partOne(ArrayList<Integer> leftSide, ArrayList<Integer> rightSide) {
         int sum = 0;
 
@@ -37,14 +38,13 @@ public class HistorianHysteria {
 
         System.out.println(sum);
     }
+    
     public static void partTwo(ArrayList<Integer> leftSide, ArrayList<Integer> rightSide) {
         int sum = 0;
-        int product = 0;
 
         for (int i = 0; i < leftSide.size(); i++) {
             int count = Collections.frequency(rightSide, leftSide.get(i));
-            product = leftSide.get(i);
-            sum += product * count;
+            sum += leftSide.get(i) * count;
         }
 
         System.out.println(sum);
