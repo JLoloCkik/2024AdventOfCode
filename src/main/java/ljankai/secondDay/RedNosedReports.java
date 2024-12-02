@@ -47,7 +47,7 @@ public class RedNosedReports {
                 break;
             }
 
-            lastNum = row[i]; //
+            lastNum = row[i];
         }
 
         if (isSafe) {
@@ -105,7 +105,7 @@ public class RedNosedReports {
     }
 
     private static int[] parseLineToIntArray (String line){
-        String[] parts = line.split("\\s+"); // Szóközökkel elválasztva
+        String[] parts = line.split("\\s+");
         int[] row = new int[parts.length];
 
         for (int i = 0; i < parts.length; i++) {
