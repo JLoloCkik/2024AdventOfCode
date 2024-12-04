@@ -78,17 +78,17 @@ public class CeresSearch {
         return count;
     }
 
-    private static boolean checkPatterns(List<String> grid, int r, int c, int[][] X_DIRS, String[] PATTERN) {
-        if (!(0 <= r + 2 && r + 2 < grid.size() && 0 <= c + 2 && c + 2 < grid.get(0).length())) {
+    private static boolean checkPatterns(List<String> grid, int row, int character, int[][] X_DIRS, String[] PATTERN) {
+        if (!(0 <= row + 2 && row + 2 < grid.size() && 0 <= character + 2 && character + 2 < grid.get(0).length())) {
             return false;
         }
 
         for (String p : PATTERN) {
-            if (grid.get(r).charAt(c) == p.charAt(0) &&
-                    grid.get(r + X_DIRS[0][0]).charAt(c + X_DIRS[0][1]) == p.charAt(1) &&
-                    grid.get(r + X_DIRS[1][0]).charAt(c + X_DIRS[1][1]) == p.charAt(2) &&
-                    grid.get(r + X_DIRS[2][0]).charAt(c + X_DIRS[2][1]) == p.charAt(3) &&
-                    grid.get(r + X_DIRS[3][0]).charAt(c + X_DIRS[3][1]) == p.charAt(4)) {
+            if (grid.get(row).charAt(character) == p.charAt(0) &&
+                    grid.get(row + X_DIRS[0][0]).charAt(character + X_DIRS[0][1]) == p.charAt(1) &&
+                    grid.get(row + X_DIRS[1][0]).charAt(character + X_DIRS[1][1]) == p.charAt(2) &&
+                    grid.get(row + X_DIRS[2][0]).charAt(character + X_DIRS[2][1]) == p.charAt(3) &&
+                    grid.get(row + X_DIRS[3][0]).charAt(character + X_DIRS[3][1]) == p.charAt(4)) {
                 return true;
             }
         }
