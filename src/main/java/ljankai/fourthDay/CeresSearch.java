@@ -4,14 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CeresSearch {
     public static void main(String[] args) {
         String filename = "./src/main/java/ljankai/fourthDay/data";
-        List<String> grid = new ArrayList<>();
+        List<String> grid = readGridFromFile(filename);
 
+        System.out.println("Part 1: " + part1(grid));
+        System.out.println("Part 2: " + part2(grid));
+    }
+
+    private static List<String> readGridFromFile(String filename) {
+        List<String> grid = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -19,34 +24,42 @@ public class CeresSearch {
             }
         } catch (IOException e) {
             System.err.println("Hiba történt a fájl beolvasása közben: " + e.getMessage());
-            return;
         }
-
-        System.out.println("Part 1: " + part1(grid));
-        System.out.println("Part 2: " + part2(grid));
+        return grid;
     }
 
     public static int part1(List<String> grid) {
         String target = "XMAS";
-        int rows = grid.size();
-        int cols = grid.get(0).length();
-
-
-        char[][] resultGrid = new char[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            Arrays.fill(resultGrid[i], '.');
-            for (int j = 0; j < cols; j++) {
-                resultGrid[i][j] = grid.get(i).charAt(j);
-            }
-        }
-
         int occurrences = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                occurrences += highlightWord(grid, resultGrid, target, i, j);
+        for (int i = 0; i < grid.size(); i++) {
+            for (int j = 0; j < grid.get(i).length(); j++) {
+                occurrences += searchWord(grid, target, i, j);
             }
         }
         return occurrences;
+    }
+
+    private static int searchWord(List<String> grid, String target, int row, int col) {
+        int count = 0;
+
+        int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+        int len = target.length();
+
+        for (int dir = 0; dir < 8; dir++) {
+            int r = row, c = col;
+            int k;
+            for (k = 0; k < len; k++) {
+                if (r < 0 || r >= grid.size() || c < 0 || c >= grid.get(r).length() || grid.get(r).charAt(c) != target.charAt(k)) {
+                    break;
+                }
+                r += directions[dir][0];
+                c += directions[dir][1];
+            }
+            if (k == len) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static int part2(List<String> grid) {
@@ -80,41 +93,5 @@ public class CeresSearch {
             }
         }
         return false;
-    }
-
-    private static int highlightWord(List<String> grid, char[][] resultGrid, String target, int row, int col) {
-        int count = 0;
-        int[] dRow = {-1, -1, -1, 0, 1, 1, 1, 0};
-        int[] dCol = {-1, 0, 1, 1, 1, 0, -1, -1};
-        int rows = grid.size();
-        int cols = grid.get(0).length();
-        int len = target.length();
-
-        for (int dir = 0; dir < 8; dir++) {
-            int r = row;
-            int c = col;
-            int k;
-
-            for (k = 0; k < len; k++) {
-                if (r < 0 || r >= rows || c < 0 || c >= cols || grid.get(r).charAt(c) != target.charAt(k)) {
-                    break;
-                }
-                r += dRow[dir];
-                c += dCol[dir];
-            }
-
-            if (k == len) {
-                count++;
-                r = row;
-                c = col;
-
-                for (k = 0; k < len; k++) {
-                    resultGrid[r][c] = grid.get(r).charAt(c);
-                    r += dRow[dir];
-                    c += dCol[dir];
-                }
-            }
-        }
-        return count;
     }
 }
