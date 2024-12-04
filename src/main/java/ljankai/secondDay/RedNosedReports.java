@@ -12,7 +12,6 @@ public class RedNosedReports {
             String line;
 
             while ((line = br.readLine()) != null) {
-
                 int[] row = parseLineToIntArray(line);
 
                 safe = safe + partOne(row);
@@ -27,24 +26,20 @@ public class RedNosedReports {
 
     }
 
-
     public static int partOne(int[] row) {
         boolean isSafe = true;
         boolean isIncreasing = row[1] > row[0];
         int lastNum = row[0];
-
 
         for (int i = 1; i < row.length; i++) {
             int diff = row[i] - lastNum;
 
             if (Math.abs(diff) < 1 || Math.abs(diff) > 3) {
                 isSafe = false;
-                break;
             }
 
             if ((isIncreasing && diff < 0) || (!isIncreasing && diff > 0)) {
                 isSafe = false;
-                break;
             }
 
             lastNum = row[i];
@@ -56,19 +51,19 @@ public class RedNosedReports {
             return 0;
         }
     }
+
     private static int partTwo(int[] row){
         int safeCount = 0;
 
         for (int removeIndex = 0; removeIndex < row.length; removeIndex++) {
-            int[] newRow = new int[row.length - 1];
+            int[] newRow = new int[row.length - 1]; // 5-1 = 4
 
             int newIndex = 0;
             for (int i = 0; i < row.length; i++) {
-                if (i != removeIndex) {
+                if (i != removeIndex) { //
                     newRow[newIndex++] = row[i];
                 }
             }
-
             if (isSafe(newRow)) {
                 safeCount++;
                 break;
@@ -78,16 +73,13 @@ public class RedNosedReports {
         return safeCount;
     }
 
-
-
     private static boolean isSafe(int[] row) {
         boolean isSafe = true;
-        boolean isIncreasing = row[1] > row[0]; // Növekvő-e a sor?
+        boolean isIncreasing = row[1] > row[0];
         int lastNum = row[0];
 
         for (int i = 1; i < row.length; i++) {
             int diff = row[i] - lastNum;
-
 
             if (Math.abs(diff) < 1 || Math.abs(diff) > 3) {
                 isSafe = false;
