@@ -69,7 +69,7 @@ public class CeresSearch {
         String[] PATTERN = {"MASSM", "MASMS", "SAMSM", "SAMMS"};
 
         for (int r = 0; r < grid.size(); r++) {
-            for (int c = 0; c < grid.get(0).length(); c++) {
+            for (int c = 0; c < grid.getFirst().length(); c++) {
                 if (checkPatterns(grid, r, c, X_DIRS, PATTERN)) {
                     count++;
                 }
@@ -79,7 +79,7 @@ public class CeresSearch {
     }
 
     private static boolean checkPatterns(List<String> grid, int row, int character, int[][] X_DIRS, String[] PATTERN) {
-        if (!(0 <= row + 2 && row + 2 < grid.size() && 0 <= character + 2 && character + 2 < grid.get(0).length())) {
+        if (!(0 <= row + 2 && row + 2 < grid.size() && 0 <= character + 2 && character + 2 < grid.getFirst().length())) {
             return false;
         }
 
