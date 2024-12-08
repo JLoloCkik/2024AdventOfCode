@@ -1,4 +1,4 @@
-package ljankai.secondDay;
+package ljankai.Day2;
 
 import java.io.*;
 
@@ -6,7 +6,7 @@ public class RedNosedReports {
     public static void main(String[] args) {
         int safe = 0;
         int count = 0;
-        String filePath = "./src/main/java/ljankai/secondDay/data";
+        String filePath = "./src/main/java/ljankai/Day2/data";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;

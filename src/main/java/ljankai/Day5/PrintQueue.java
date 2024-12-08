@@ -1,4 +1,4 @@
-package ljankai.fifthDay;
+package ljankai.Day5;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PrintQueue  {
     public static void main(String[] args) {
-        String filename = "./src/main/java/ljankai/fifthDay/data";
+        String filename = "./src/main/java/ljankai/Day5/data";
         List<String> lines = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {

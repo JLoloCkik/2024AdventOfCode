@@ -1,4 +1,4 @@
-package ljankai.fourthDay;
+package ljankai.Day4;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CeresSearch {
     public static void main(String[] args) {
-        String filename = "./src/main/java/ljankai/fourthDay/data";
+        String filename = "./src/main/java/ljankai/Day4/data";
         List<String> grid = readGridFromFile(filename);
 
         System.out.println("Part 1: " + part1(grid));

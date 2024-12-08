@@ -1,4 +1,4 @@
-package ljankai.firstDay;
+package ljankai.Day1;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class HistorianHysteria {
     public static void main(String[] args) {
-        String fileName = "./src/main/java/ljankai/firstDay/data";
+        String fileName = "./src/main/java/ljankai/Day1/data";
         ArrayList<Integer> leftSide = new ArrayList<>();
         ArrayList<Integer> rightSide = new ArrayList<>();
 

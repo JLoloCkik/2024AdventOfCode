@@ -1,4 +1,4 @@
-package ljankai.thirdDay;
+package ljankai.Day3;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class MulItOver {
     public static void main(String[] args) {
-        String filePath = "./src/main/java/ljankai/thirdDay/data";
+        String filePath = "./src/main/java/ljankai/Day3/data";
 
         StringBuilder input = new StringBuilder();
 
@@ -32,7 +32,7 @@ public class MulItOver {
         while (matcher.find()) {
             String currentSubstring = input.substring(currentIndex, matcher.start());
             currentIndex = matcher.end();
-
+             //Comment turn off
             if (currentSubstring.contains("don't()")) {
                 mulEnabled = false;
             } else if (currentSubstring.contains("do()")) {
