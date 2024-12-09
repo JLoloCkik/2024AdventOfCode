@@ -57,7 +57,6 @@ public class ResonantCollinearity {
                 }
             }
         }
-
         return antinodes.size();
     }
 
@@ -83,7 +82,8 @@ public class ResonantCollinearity {
                     int gcd = gcd(Math.abs(dx), Math.abs(dy));
                     dx /= gcd;
                     dy /= gcd;
-                    
+
+                    // Lépési egység kiszámolása
                     antinodes.addAll(extrapolateAntinodes(pos1, -dx, -dy, rows, cols));
                     antinodes.addAll(extrapolateAntinodes(pos2, dx, dy, rows, cols));
                 }
@@ -109,7 +109,7 @@ public class ResonantCollinearity {
         }
         return antennas;
     }
-
+     //LNKO
     private static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
     }

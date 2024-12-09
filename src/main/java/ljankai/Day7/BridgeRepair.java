@@ -15,8 +15,7 @@ public class BridgeRepair {
         System.out.println("Part 2 Calibration Result: " + calculateCalibrationResult(equations, true));
     }
 
-    public record Line(long target, List<Long> numbers) {
-    }
+    public record Line(long target, List<Long> numbers) {}
 
     private static List<Line> readFile(String filename) {
         List<Line> equations = new ArrayList<>();
@@ -45,7 +44,6 @@ public class BridgeRepair {
                 total += line.target;
             }
         }
-
         return total;
     }
 
