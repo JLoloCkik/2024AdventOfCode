@@ -13,12 +13,6 @@ public class DiskMap {
         size = new long[line.length()];
         loc = new long[line.length()];
 
-
-        if (line.isEmpty()) {
-            System.err.println("Error: Input data is empty or file could not be read.");
-            return;
-        }
-
         System.out.println("PartOne: " + partOne(line));
         System.out.println("PatTwo: " + partTwo(line));
     }
@@ -110,6 +104,7 @@ public class DiskMap {
         move(filesystem);
         return checksum(filesystem);
     }
+
     private static Long[] makeFilesystem(String diskmap) {
         List<Long> blocks = new ArrayList<>();
         boolean isFile = true;
@@ -117,6 +112,7 @@ public class DiskMap {
 
         for (char c : diskmap.toCharArray()) {
             int x = Character.getNumericValue(c);
+
             if (isFile) {
                 loc[(int) id] = blocks.size();
                 size[(int) id] = x;
@@ -132,7 +128,6 @@ public class DiskMap {
                 isFile = true;
             }
         }
-
         return blocks.toArray(new Long[0]); // Convert list to array
     }
 
@@ -144,8 +139,7 @@ public class DiskMap {
         big--;
 
         for (int toMove = big; toMove >= 0; toMove--) {
-            int freeSpace = 0;
-            int firstFree = 0;
+            int freeSpace = 0, firstFree = 0;
             while (firstFree < loc[toMove] && freeSpace < size[toMove]) {
                 firstFree += freeSpace;
                 freeSpace = 0;
