@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Arrays;
 
-public class Task {
+public class  ClawContraption {
     public static void main(String[] args) {
         String filename = "./src/main/java/ljankai/Day13/data";
-        Task task = new Task();
+        ClawContraption task = new ClawContraption();
 
         System.out.println("Part 1 solution: " + task.part1(filename));
 
