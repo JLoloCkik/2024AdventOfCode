@@ -18,7 +18,7 @@ public class RobotMove {
         while (!foundTree && seconds < 10000) {
             seconds++;
             map(width, height, data);
-            foundTree = checkForChristmasTree(width, height, data);
+            foundTree = checkForChristmasTree(width, height, data,seconds);
         }
         int safetyFactor = calculateSafetyFactor(width, height, data);
         System.out.println("Biztonsági faktor: " + safetyFactor);
@@ -58,7 +58,7 @@ public class RobotMove {
         }
     }
 
-    private static boolean checkForChristmasTree(int width, int height, List<Robot> data) {
+    private static boolean checkForChristmasTree(int width, int height, List<Robot> data, int time) {
         char[][] treePattern = {
                 {'.', '.', '.', '.', 'X', '.', '.', '.', '.', '.'},
                 {'.', '.', '.', 'X', 'X', 'X', '.', '.', '.', '.'},
@@ -79,6 +79,15 @@ public class RobotMove {
 
         for (Robot robot : data) {
             map[robot.y()][robot.x()] = 'X';
+        }
+
+        if (time > 6354){
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    System.out.print(map[i][j]);
+                }
+                System.out.println();
+            }
         }
 
         for (int y = 0; y < height - 6; y++) {
