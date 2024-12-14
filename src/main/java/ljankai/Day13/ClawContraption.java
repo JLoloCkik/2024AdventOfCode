@@ -58,7 +58,6 @@ public class ClawContraption {
 
         public long fewestTokens() {
             long denominator = bX * aY - bY * aX;
-            if (denominator == 0) return 0;
 
             long b = (prizeX * aY - prizeY * aX) / denominator;
             long remX = prizeX - b * bX;
