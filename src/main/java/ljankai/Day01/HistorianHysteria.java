@@ -1,4 +1,4 @@
-package ljankai.Day1;
+package ljankai.Day01;
 
 import java.io.*;
 import java.util.ArrayList;
