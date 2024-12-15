@@ -18,7 +18,6 @@ public class StoneCalculator {
 
         System.out.println("After 25 blinks: " + calculator.calculateStones(25, lines));
         System.out.println("After 75 blinks: " + calculator.calculateStones(75, lines));
-
     }
 
     public long calculateStones(int totalBlinks, List<String> dayStream) {
