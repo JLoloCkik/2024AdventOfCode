@@ -21,7 +21,6 @@ public class ReindeerMaze {
         String[] G = D.split("\n");
         int R = G.length;
         int C = G[0].length();
-
         char[][] grid = createGrid(G, R, C);
 
         int[] startPos = findPosition(grid, 'S');
@@ -30,12 +29,13 @@ public class ReindeerMaze {
         PriorityQueue<int[]> Q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
         Set<String> SEEN = new HashSet<>();
         Map<String, Integer> DIST = new HashMap<>();
+        // A legjobb út megtalálása
         int best = findBestPath(Q, DIST, SEEN, startPos, endPos, R, C, grid);
-
         Map<String, Integer> DIST2 = new HashMap<>();
         SEEN.clear();
         calculateDistancesFromEnd(Q, DIST2, R, C, grid, endPos);
 
+        // Távolságok számítása az E-től
         Set<String> OK = findOptimalCells(DIST, DIST2, best, R, C);
 
         System.out.println("Az optimális úton lévő cellák száma: " + OK.size());
