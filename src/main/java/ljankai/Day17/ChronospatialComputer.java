@@ -20,7 +20,7 @@ public class ChronospatialComputer {
 
         while (!stack.isEmpty()) {
             Pair<Integer, Long> state = stack.pop();
-            int depth = state.a();
+            var depth = state.a();
             long score = state.b();
 
             if (depth == program.size()) valids.add(score);
@@ -29,7 +29,7 @@ public class ChronospatialComputer {
                     long newScore = i + 8 * score;
                     RegisterData simulation = new RegisterData(newScore, data.registerB(), data.registerC(), program);
 
-                    if (simulateComputer(simulation).getFirst() == program.get(program.size() - 1 - depth)) {
+                    if (Objects.equals(simulateComputer(simulation).getFirst(), program.get(program.size() - 1 - depth))) {
                         stack.push(new Pair<>(depth + 1, newScore));
                     }
                 }
@@ -39,7 +39,7 @@ public class ChronospatialComputer {
     }
 
     private static List<Integer> simulateComputer(RegisterData data) {
-        List<Integer> outs = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         long registerA = data.registerA(), registerB = data.registerB(), registerC = data.registerC();
 
         List<Integer> input = data.program();
@@ -53,13 +53,13 @@ public class ChronospatialComputer {
                     if (registerA != 0) i = input.get(i) - 1;
                 }
                 case 4 -> registerB ^= registerC;
-                case 5 -> outs.add((int) (computeOperand(input.get(i), registerA, registerB, registerC) % 8));
+                case 5 -> result.add((int) (computeOperand(input.get(i), registerA, registerB, registerC) % 8));
                 case 6 -> registerB = registerA >> computeOperand(input.get(i), registerA, registerB, registerC);
                 case 7 -> registerC = registerA >> computeOperand(input.get(i), registerA, registerB, registerC);
                 default -> throw new IllegalArgumentException("Invalid opcode: " + cmd);
             }
         }
-        return outs;
+        return result;
     }
 
     private static long computeOperand(long val, long a, long b, long c) {
