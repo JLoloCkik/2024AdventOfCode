@@ -12,7 +12,7 @@ public class RAMRun {
     private static final char CORRUPTED = '#';
 
     public static void main(String[] args) throws IOException {
-        String filename = "./src/main/java/ljankai/Day18/data"; // Default file name
+        String filename = "./src/main/java/ljankai/Day18/data";
         if (args.length >= 1) {
             filename = args[0];
         }
@@ -32,7 +32,6 @@ public class RAMRun {
             int y = Integer.parseInt(parts[1].trim());
 
             if (0 <= y && y < N && 0 <= x && x < N) G[y][x] = CORRUPTED;
-
 
             boolean ok = false;
             Queue<int[]> queue = new LinkedList<>();
@@ -57,7 +56,6 @@ public class RAMRun {
                 for (int[] dir : DIRS) {
                     int rr = r + dir[0];
                     int cc = c + dir[1];
-
 
                     if (0 <= rr && rr < N && 0 <= cc && cc < N && G[rr][cc] != CORRUPTED) {
                         queue.offer(new int[]{steps + 1, rr, cc});

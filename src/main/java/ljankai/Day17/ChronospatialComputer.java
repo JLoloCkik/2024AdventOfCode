@@ -21,7 +21,7 @@ public class ChronospatialComputer {
         while (!stack.isEmpty()) {
             Pair<Integer, Long> state = stack.pop();
             var depth = state.a();
-            long score = state.b();
+            var score = state.b();
 
             if (depth == program.size()) valids.add(score);
             else {
