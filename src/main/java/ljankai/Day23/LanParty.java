@@ -22,19 +22,15 @@ public class LanParty {
             graph.computeIfAbsent(nodeB, k -> new HashSet<>()).add(nodeA);
         }
 
-        System.out.println("Gráf: " + graph);
-
         // Part One: Háromszögek keresése
         Set<Set<String>> triangles = findTriangles(graph);
         long count = triangles.stream()
                 .filter(triangle -> triangle.stream().anyMatch(node -> node.startsWith("t")))
                 .count();
-        System.out.println("Összes háromszög: " + triangles.size());
         System.out.println("Háromszögek kezdődő csúccsal: " + count);
 
         // Part Two: Legnagyobb klikk keresése
         Set<String> largestClique = findLargestClique(graph);
-        System.out.println("Legnagyobb klikk mérete: " + largestClique.size());
 
         // Jelszó generálása
         String password = String.join(",", largestClique.stream().sorted().toList());
